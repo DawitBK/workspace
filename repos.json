@@ -29,6 +29,15 @@
       "visibility": "public"
     },
     {
+      "name": "retail-os",
+      "remote": "https://github.com/DawitBK/retail-os",
+      "path": "apps/retail-os",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public"
+    },
+    {
       "name": "portfolio",
       "remote": "https://github.com/DawitBK/Portfolio",
       "path": "personal/portfolio",
