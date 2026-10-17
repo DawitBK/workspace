@@ -38,6 +38,15 @@
       "visibility": "public"
     },
     {
+      "name": "jobpilot",
+      "remote": "https://github.com/DawitBK/jobpilot",
+      "path": "apps/jobpilot",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public"
+    },
+    {
       "name": "portfolio",
       "remote": "https://github.com/DawitBK/Portfolio",
       "path": "personal/portfolio",
