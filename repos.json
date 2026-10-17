@@ -46,6 +46,36 @@
       ],
       "visibility": "public",
       "note": "read-only upstream, never edited or committed"
+    },
+    {
+      "name": "api-training",
+      "remote": "https://github.com/dgebr1/api-training",
+      "path": "learning/api-training",
+      "scopes": [
+        "learning"
+      ],
+      "visibility": "public",
+      "note": "third-party course clone"
+    },
+    {
+      "name": "react-crash-2024",
+      "remote": "https://github.com/bradtraversy/react-crash-2024",
+      "path": "learning/react-crash-2024",
+      "scopes": [
+        "learning"
+      ],
+      "visibility": "public",
+      "note": "third-party course clone"
+    },
+    {
+      "name": "webstorm-untitled",
+      "remote": null,
+      "path": "learning/webstorm-projects/untitled",
+      "scopes": [
+        "learning"
+      ],
+      "visibility": "local",
+      "note": "empty IDE sample, no commits"
     }
   ]
 }
