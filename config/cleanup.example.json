@@ -1,0 +1,39 @@
+{
+  "_note": "A generic example of a clean-up rule file for `inventory`. Real, personal rule files live outside this repo. Placeholders: ${HOME}. Entries are classified by name and extension only; no file is opened. First matching rule wins. Actions: move, quarantine, hold, leave. Batches: A junk by rule, B documents to the Vault, C clones, D projects, H held.",
+  "vault": "${HOME}/Vault",
+  "dev": "${HOME}/dev",
+  "runtime": "${HOME}/runtime",
+  "quarantine": "${HOME}/runtime/quarantine",
+  "roots": [
+    { "label": "telegram", "path": "${HOME}/Downloads/Telegram Desktop" },
+    { "label": "onedrive-desktop", "path": "${HOME}/OneDrive/Desktop" },
+    { "label": "home", "path": "${HOME}", "only": true }
+  ],
+  "keepNewest": {
+    "match": "^snapshot-.*\\.(7z|zip)$",
+    "roots": ["telegram"],
+    "keep": 2,
+    "keepDest": "vault:Archives/snapshots",
+    "rest": { "action": "quarantine", "reason": "snapshots-older", "batch": "A" }
+  },
+  "rules": [
+    { "roots": ["home"], "name": "^admin_token\\.txt$", "action": "move", "dest": "vault:Work/sensitive", "reason": "sensitive", "batch": "B" },
+    { "roots": ["home"], "name": "^(setup|install).*\\.(exe|msi)$", "action": "quarantine", "reason": "installers", "batch": "A" },
+    { "roots": ["onedrive-desktop"], "name": "^resume$", "type": "dir", "action": "move", "dest": "vault:Identity-and-Career/resume", "reason": "personal documents", "batch": "B" },
+    { "roots": ["onedrive-desktop"], "name": "\\.lnk$", "action": "move", "dest": "onedrive-desktop:Shortcuts", "reason": "shortcuts grouped", "batch": "B" },
+    { "type": "file", "name": "^desktop\\.ini$", "action": "leave", "reason": "Windows folder metadata" },
+    { "type": "dir", "action": "quarantine", "reason": "office-lock-shell", "batch": "A", "special": "onlyLockFiles" },
+    { "type": "dir", "action": "quarantine", "reason": "empty-folders", "batch": "A", "special": "empty" },
+    { "type": "file", "name": "^~\\$", "action": "quarantine", "reason": "office-lock-files", "batch": "A" },
+    { "type": "file", "name": "(token|secret|password|passwd|private[-_ ]?key|id_rsa)|\\.(pem|pfx|key|rdp)$", "action": "move", "dest": "vault:Work/sensitive", "reason": "sensitive by name: never opened", "batch": "B" },
+    { "type": "file", "ext": [".sql", ".db", ".rdb", ".mdf", ".ldf", ".bak", ".dump"], "action": "move", "dest": "vault:_to-review/data-files", "reason": "data files: never opened", "batch": "B" },
+    { "type": "file", "name": "^\\d{4}[-_]\\d{2}[-_]\\d{2}.*\\.txt$", "action": "move", "dest": "vault:Work/agent-sessions", "reason": "dated chat export", "batch": "B" },
+    { "type": "file", "name": "(resume|curriculum|\\bcv\\b|cover ?letter|application ?letter|certificate|passport|diploma|transcript)", "action": "move", "dest": "vault:Identity-and-Career", "reason": "career and identity documents", "batch": "B" },
+    { "type": "file", "name": "(receipt|invoice|statement|payslip|\\btax\\b)", "action": "move", "dest": "vault:Finance", "reason": "finance documents", "batch": "B" },
+    { "type": "file", "name": "(roadmap|interview|lecture|notes|guide|tutorial|course|cheat|assignment)", "action": "move", "dest": "vault:Learning", "reason": "learning material", "batch": "B" },
+    { "type": "file", "ext": [".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp4", ".mp3", ".mov"], "action": "move", "dest": "vault:Media", "reason": "media", "batch": "B" },
+    { "type": "file", "ext": [".zip", ".7z", ".rar", ".tar", ".gz", ".tgz"], "action": "move", "dest": "vault:Archives", "reason": "archives", "batch": "B" },
+    { "type": "file", "action": "move", "dest": "vault:_to-review", "reason": "no rule matched", "batch": "B" },
+    { "type": "dir", "action": "hold", "reason": "folder with content and no rule", "batch": "H" }
+  ]
+}

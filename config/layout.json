@@ -1,0 +1,69 @@
+{
+  "_note": "The declared layout that `doctor` checks. Placeholders: ${HOME}. Names starting with a dot are tool state and always allowed.",
+  "dev": {
+    "path": "${HOME}/dev",
+    "children": [
+      "company",
+      "product",
+      "apps",
+      "personal",
+      "vendor",
+      "learning",
+      "workspace",
+      "workspace-private"
+    ]
+  },
+  "home": {
+    "path": "${HOME}",
+    "allow": [
+      "dev",
+      "Vault",
+      "Inbox",
+      "Tools",
+      "runtime",
+      "Downloads",
+      "Documents",
+      "Desktop",
+      "OneDrive",
+      "Pictures",
+      "Music",
+      "Videos",
+      "Contacts",
+      "Favorites",
+      "Links",
+      "Searches",
+      "Saved Games",
+      "AppData",
+      "Postman",
+      "WPS Cloud",
+      "3D Objects"
+    ],
+    "allowFiles": [
+      "^NTUSER",
+      "^ntuser",
+      "^\\."
+    ]
+  },
+  "scan": {
+    "roots": [
+      "${HOME}/dev",
+      "${HOME}/Vault",
+      "${HOME}/Inbox",
+      "${HOME}/Tools"
+    ],
+    "copyNames": "( \\(\\d+\\)|\\(\\d+\\) \\(\\d+\\)| - Copy|\\bcopy of\\b|_final\\b|\\bfinal\\b|\\bnew folder\\b|V\\d+$)",
+    "secretNames": "(token|secret|password|passwd|private[-_ ]?key|id_rsa)|\\.(pem|pfx|key|rdp)$|^\\.env(\\.|$)",
+    "prune": [
+      "node_modules",
+      ".git",
+      ".next",
+      ".venv",
+      "dist",
+      "build",
+      "coverage",
+      "target"
+    ],
+    "maxDepth": 4,
+    "largeFileBytes": 104857600
+  }
+}

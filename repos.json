@@ -1,0 +1,51 @@
+{
+  "_note": "Every public repository on this machine: remote, local path (relative to ${HOME}/dev unless absolute), scopes, visibility. Private repositories are listed in workspace-private/repos.private.json and merged by doctor.",
+  "repos": [
+    {
+      "name": "workspace",
+      "remote": null,
+      "path": "workspace",
+      "scopes": [
+        "core"
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "martronics",
+      "remote": "https://github.com/DawitBK/martronics",
+      "path": "apps/martronics",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "library-management-system",
+      "remote": "https://github.com/DawitBK/library-management-system",
+      "path": "apps/library-management-system",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "portfolio",
+      "remote": "https://github.com/DawitBK/Portfolio",
+      "path": "personal/portfolio",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "odoo",
+      "remote": "https://github.com/odoo/odoo",
+      "path": "vendor/odoo",
+      "scopes": [
+        "odoo"
+      ],
+      "visibility": "public",
+      "note": "read-only upstream, never edited or committed"
+    }
+  ]
+}
