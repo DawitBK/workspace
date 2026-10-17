@@ -1,0 +1,10 @@
+{
+  "scopes": {
+    "core": "this repo, the stack template and the shared CI workflows",
+    "showcase": "the public apps and sites",
+    "product": "the SaaS product line and its infrastructure",
+    "odoo": "MOS on Odoo (needs access) and the read-only Odoo upstream",
+    "company": "private company repositories (needs access)",
+    "learning": "archived coursework"
+  }
+}

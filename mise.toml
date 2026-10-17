@@ -1,0 +1,5 @@
+# Pins the toolchain for every repo that follows the house stack (mise: https://mise.jdx.dev).
+[tools]
+node = "24"
+pnpm = "10"
+python = "3.12"

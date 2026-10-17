@@ -1,0 +1,12 @@
+{
+  "name": "workspace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "node src/cli.mjs pull --scope=core",
+  "customizations": {
+    "vscode": { "extensions": ["editorconfig.editorconfig", "dbaeumer.vscode-eslint"] }
+  }
+}

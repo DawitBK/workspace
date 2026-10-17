@@ -4,15 +4,15 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, resolve, isAbsolute } from 'node:path';
 import { expand, repoGate } from './lib.mjs';
+import { loadRepos } from './manifest.mjs';
 
 const here = new URL('..', import.meta.url);
 const load = (f) => JSON.parse(readFileSync(new URL(f, here), 'utf8'));
 const layout = load('config/layout.json');
-// private repositories live in a sibling repo (workspace-private) and are merged in when it is present
-const privateManifest = new URL('../workspace-private/repos.private.json', here);
-const repos = [...load('repos.json').repos, ...(existsSync(privateManifest) ? JSON.parse(readFileSync(privateManifest, 'utf8')).repos : [])];
+// the manifest (public repos.json plus the private overlay, when present) comes from the shared loader
+const repos = loadRepos();
 const strict = process.argv.includes('--strict');
-const devRoot = expand(layout.dev.path);
+const devRoot = process.env.WORKSPACE_DEV_ROOT ? resolve(process.env.WORKSPACE_DEV_ROOT) : expand(layout.dev.path);
 const findings = {};
 const add = (k, msg) => (findings[k] ??= []).push(msg);
 
@@ -36,7 +36,7 @@ const walk = (dir, depth) => {
 for (const r of layout.scan.roots) if (existsSync(expand(r))) walk(expand(r), 0);
 
 // 5. repositories: manifest versus disk, and each repo's gate
-const manifestPaths = repos.map((r) => resolve(isAbsolute(expand(r.path)) ? expand(r.path) : join(devRoot, r.path)));
+const manifestPaths = repos.map((r) => r.abs);
 const found = [];
 const findRepos = (dir, depth) => {
   if (!existsSync(dir) || depth > 3) return;

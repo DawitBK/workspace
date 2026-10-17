@@ -3,11 +3,17 @@
   "private": true,
   "type": "module",
   "description": "Control repo: manifest, doctor, inventory and apply tooling for the local workspace",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "node --test \"test/**/*.test.mjs\"",
     "inventory": "node src/inventory.mjs",
     "apply": "node src/apply.mjs",
-    "doctor": "node src/doctor.mjs"
+    "doctor": "node src/doctor.mjs",
+    "workspace": "node src/cli.mjs"
+  },
+  "bin": {
+    "workspace": "src/cli.mjs"
   }
 }
