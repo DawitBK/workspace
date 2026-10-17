@@ -20,9 +20,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-    env:
-      WORKSPACE_DEV_ROOT: ${{ runner.temp }}/dev
     steps:
+      # the runner context is not available in a job-level env, so the empty target folder is exported from a step
+      - name: empty target folder for the clones
+        shell: bash
+        run: echo "WORKSPACE_DEV_ROOT=${{ runner.temp }}/dev" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
