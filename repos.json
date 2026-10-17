@@ -94,6 +94,16 @@
       ],
       "visibility": "public",
       "note": "content untouched by the programme"
+    },
+    {
+      "name": "meridian",
+      "remote": "https://github.com/dawit-labs/meridian",
+      "path": "product/meridian",
+      "scopes": [
+        "product",
+        "showcase"
+      ],
+      "visibility": "public"
     }
   ]
 }
