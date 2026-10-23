@@ -3,7 +3,7 @@
   "repos": [
     {
       "name": "workspace",
-      "remote": null,
+      "remote": "https://github.com/DawitBK/workspace",
       "path": "workspace",
       "scopes": [
         "core"
@@ -54,6 +54,46 @@
         "showcase"
       ],
       "visibility": "public"
+    },
+    {
+      "name": "profile",
+      "remote": "https://github.com/DawitBK/DawitBK",
+      "path": "personal/profile",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public",
+      "note": "the GitHub profile README"
+    },
+    {
+      "name": "sso-showcase",
+      "remote": "https://github.com/DawitBK/sso-showcase",
+      "path": "personal/sso-showcase",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public",
+      "note": "write-up and screenshots only; the source is private"
+    },
+    {
+      "name": "dms-showcase",
+      "remote": "https://github.com/DawitBK/dms-showcase",
+      "path": "personal/dms-showcase",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public",
+      "note": "write-up and screenshots only; the source is private"
+    },
+    {
+      "name": "gms-showcase",
+      "remote": "https://github.com/DawitBK/gms-showcase",
+      "path": "personal/gms-showcase",
+      "scopes": [
+        "showcase"
+      ],
+      "visibility": "public",
+      "note": "write-up and screenshots only; the source is private"
     },
     {
       "name": "odoo",
